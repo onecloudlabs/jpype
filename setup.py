@@ -15,12 +15,14 @@ from setuptools.command.build_ext import build_ext
 
 """
 this parameter is used to opt out numpy support in _jpype library
+
+Re-enable if you are using sparse vectors or large matrices and array math
 """
-if "--disable-numpy" in sys.argv:
-    disabled_numpy = True
-    sys.argv.remove("--disable-numpy")
-else:
+if "--enable-numpy" in sys.argv:
     disabled_numpy = False
+    sys.argv.remove("--enable-numpy")
+else:
+    disabled_numpy = True
 
 class FeatureNotice(exceptions.Warning):
     """ indicate notices about features """
